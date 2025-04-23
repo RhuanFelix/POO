@@ -75,7 +75,7 @@ public class Funcionario {
         this.salario = salario;
     }
 
-    public String estadoDoObjeto(){
+    public String toString(){
         return String.format("Código: %s \nNome: %s \nCPF: %s \nEndereço: %s \nTelefone: %s \nIdade: %d \nSalário: R$ %.2f", codigo, nome, cpf, endereco, telefone, idade, salario);
     }
 

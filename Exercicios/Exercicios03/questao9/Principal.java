@@ -27,7 +27,7 @@ public class Principal {
         System.out.println("Resultado:");
 
         for (int i = 0; i < C.length; i++) {
-            C[i] = A[i] / B[i];
+            C[i] = (double)A[i] / B[i];
             System.out.println(C[i]);
         }
 

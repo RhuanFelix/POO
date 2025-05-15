@@ -16,35 +16,35 @@ public class Principal {
         System.out.println("Digite um código para o segundo guerreiro:");
         int codigo2 = in.nextInt();
 
-        Guerreiro guerreiro1 = new Guerreiro(codigo1, nome1);
-        Guerreiro guerreiro2 = new Guerreiro(codigo2, nome2);
+        Guerreiro guerreiro = new Guerreiro(codigo1, nome1);
+        Guerreiro oponente = new Guerreiro(codigo2, nome2);
 
         System.out.println("Resultado iterativo:");
 
-        guerreiro1.lutarIterativo(guerreiro2);
+        guerreiro.lutarIterativo(oponente);
 
-        if (guerreiro1.getEnergia() > 0) {
-            guerreiro1.alimentar();
-            System.out.println("Vencedor: " + guerreiro1.toString());
-            System.out.println("Perdedor: " + guerreiro2.toString());
+        if (guerreiro.getEnergia() > 0) {
+            guerreiro.alimentar();
+            System.out.println("Vencedor: " + guerreiro.toString());
+            System.out.println("Perdedor: " + oponente.toString());
         } else {
-            guerreiro2.alimentar();
-            System.out.println("Vencedor: " + guerreiro2.toString());
-            System.out.println("Perdedor: " + guerreiro1.toString());
+            oponente.alimentar();
+            System.out.println("Vencedor: " + oponente.toString());
+            System.out.println("Perdedor: " + guerreiro.toString());
         }
 
         System.out.println("Resultado recursivo:");
 
-        guerreiro1.lutarRecursivo(guerreiro2);
+        guerreiro.lutarRecursivo(oponente);
 
-        if (guerreiro1.getEnergia() > 0) {
-            guerreiro1.alimentar();
-            System.out.println("Vencedor: " + guerreiro1.toString());
-            System.out.println("Perdedor: " + guerreiro2.toString());
+        if (guerreiro.getEnergia() > 0) {
+            guerreiro.alimentar();
+            System.out.println("Vencedor: " + guerreiro.toString());
+            System.out.println("Perdedor: " + oponente.toString());
         } else {
-            guerreiro2.alimentar();
-            System.out.println("Vencedor: " + guerreiro2.toString());
-            System.out.println("Perdedor: " + guerreiro1.toString());
+            oponente.alimentar();
+            System.out.println("Vencedor: " + oponente.toString());
+            System.out.println("Perdedor: " + guerreiro.toString());
         }
 
         in.close();

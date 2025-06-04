@@ -3,20 +3,20 @@ package Exercicios.Exercicios05.Helicoptero;
 public class Helicoptero {
     private boolean ligado;
     private int altura;
-    private int CapacidadeDoHelicoptero;
+    private int capacidadeDoHelicoptero;
     private int quantPessoas;
 
-    public Helicoptero(int CapacidadeDoHelicoptero){
-        this.CapacidadeDoHelicoptero = CapacidadeDoHelicoptero;
+    public Helicoptero(int capacidadeDoHelicoptero){
+        this.capacidadeDoHelicoptero = capacidadeDoHelicoptero;
         this.ligado = false;
         this.altura = 0;
         this.quantPessoas = 0;
     }
 
     public void entrar(){
-        if (quantPessoas <= CapacidadeDoHelicoptero) {
-            this.quantPessoas++;
-            System.out.println(quantPessoas);
+        if (quantPessoas < capacidadeDoHelicoptero) {
+            quantPessoas++;
+            System.out.println("Quantidade de pessoas: " + quantPessoas);
         } else {
             System.out.println("O helicóptero já está cheio!");
         }
@@ -24,8 +24,8 @@ public class Helicoptero {
 
     public void sair(){
         if (quantPessoas > 0) {
-            System.out.println(quantPessoas);
             quantPessoas--;
+            System.out.println("Quantidade de pessoas: " + quantPessoas);
         } else {
             System.out.println("Não tem ninguém no Helicóptero!");
         }
@@ -33,11 +33,24 @@ public class Helicoptero {
 
     public boolean ligar(){
         if (ligado) {
-            System.out.println("O helicóptero já está ligado");
+            System.out.println("O helicóptero já está ligado!");
             return false;
         } else {
             ligado = true;
-            return ligado;
+            return true;
+        }
+    }
+
+    public boolean desligar(){
+        if (!ligado) {
+            System.out.println("O helicóptero já está desligado!");
+            return false;
+        } else if (altura > 0) {
+            System.out.println("Não é possível desligar enquanto estiver no ar!");
+            return false;
+        } else {
+            ligado = false;
+            return true;
         }
     }
 
@@ -45,6 +58,7 @@ public class Helicoptero {
         if (ligado) {
             if (this.altura == 0) {
                 this.altura = altura;
+                System.out.println("Decolou para altura: " + altura);
             } else {
                 System.out.println("O helicóptero já decolou!");
             }
@@ -56,10 +70,12 @@ public class Helicoptero {
     public void aterrissar(){
         if (ligado && altura > 0) {
             System.out.println("Altura atual: " + altura);
-            for (int i = altura; i > 0; i--) {
-                altura--;
-            }
-            System.out.println("Altura depois de aterrissar: " + altura);
+            altura = 0;
+            System.out.println("Aterrissou. Altura atual: " + altura);
+        } else if (!ligado) {
+            System.out.println("O helicóptero está desligado!");
+        } else {
+            System.out.println("O helicóptero já está no solo!");
         }
     }
 
@@ -72,7 +88,7 @@ public class Helicoptero {
     }
 
     public int getCapacidadeDoHelicoptero(){
-        return CapacidadeDoHelicoptero;
+        return capacidadeDoHelicoptero;
     }
 
     public int getQuantPessoas(){
@@ -87,8 +103,8 @@ public class Helicoptero {
         this.altura = altura;
     }
 
-    public void setCapacidadeDoHelicoptero(int CapacidadeDoHelicoptero){
-        this.CapacidadeDoHelicoptero = CapacidadeDoHelicoptero;
+    public void setCapacidadeDoHelicoptero(int capacidadeDoHelicoptero){
+        this.capacidadeDoHelicoptero = capacidadeDoHelicoptero;
     }
 
     public void setQuantPessoas(int quantPessoas){
@@ -96,6 +112,6 @@ public class Helicoptero {
     }
 
     public String toString(){
-        return String.format("Ligado: %b - Altura: %d - Capacidade do Helicóptero: %d - Quantidade de Pessoas: %d", ligado, altura, CapacidadeDoHelicoptero, quantPessoas);
+        return String.format("Ligado: %b - Altura: %d - Capacidade: %d - Pessoas: %d", ligado, altura, capacidadeDoHelicoptero, quantPessoas);
     }
 }

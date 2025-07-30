@@ -27,7 +27,7 @@ public class Main {
                     System.out.println("Você atingiu o valor máximo de movimentos!");
                     break;
 
-                } else if (jogo.getTabuleiro()[jogo.getLinha()][jogo.getColuna()] instanceof Tesouro) {
+                } else if (jogo.getTabuleiro()[jogo.getLinha()][jogo.getColuna()].interagir() == 3) {
                     ++contadorTesouros;
 
                     if (contadorTesouros == 3) {

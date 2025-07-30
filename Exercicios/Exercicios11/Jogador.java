@@ -4,7 +4,6 @@ public class Jogador {
     Jogo jogo;
     private int movimentos, pontos;
 
-
     public Jogador() {
         jogo = new Jogo();
         movimentos = 0;

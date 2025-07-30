@@ -1,6 +1,7 @@
 package Exercicios.Exercicios11;
 
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 public class Jogo {
@@ -8,8 +9,7 @@ public class Jogo {
     private String[][] tabuleiroString;
     private Set<ElementoTabuleiro> posicoesVisitadas;
     private Set<ElementoTabuleiro> tesouroArmadilha;
-    private Set<ElementoTabuleiro> tesouros;
-    private Set<ElementoTabuleiro> armadilhas;
+    private Random random;
     private int linha, coluna;
 
     public Jogo() {
@@ -17,8 +17,7 @@ public class Jogo {
         tabuleiroString = new String[6][6];
         posicoesVisitadas = new HashSet<>();
         tesouroArmadilha = new HashSet<>();
-        tesouros = new HashSet<>();
-        armadilhas = new HashSet<>();
+        random = new Random();
         addArmadilhas();
         addTesouros();
         addVazio();
@@ -28,20 +27,30 @@ public class Jogo {
     }
 
     public void addTesouros() {
-        int[][] elementosTesouro = {{1, 4}, {2, 5}, {3, 5}};
-        for (int[] posicao : elementosTesouro) {
-            tabuleiro[posicao[0]][posicao[1]] = new Tesouro();
-            tesouroArmadilha.add(tabuleiro[posicao[0]][posicao[1]]);
-            tesouros.add(tabuleiro[posicao[0]][posicao[1]]);
+        int contador = 1;
+        while (contador <= 3) {
+            int linhaTemp = random.nextInt(6);
+            int colunaTemp = random.nextInt(6);
+
+            if (tabuleiro[linhaTemp][colunaTemp] == null) {
+                tabuleiro[linhaTemp][colunaTemp] = new Tesouro();
+                tesouroArmadilha.add(tabuleiro[linhaTemp][colunaTemp]);
+                ++contador;
+            }
         }
     }
 
     public void addArmadilhas() {
-        int[][] elementosArmadilha = {{2, 4}, {5,1}, {3, 1}};
-        for (int[] posicao : elementosArmadilha) {
-            tabuleiro[posicao[0]][posicao[1]] = new Armadilha();
-            tesouroArmadilha.add(tabuleiro[posicao[0]][posicao[1]]);
-            armadilhas.add(tabuleiro[posicao[0]][posicao[1]]);
+        int contador = 1;
+        while (contador <= 3) {
+            int linhaTemp = random.nextInt(6);
+            int colunaTemp = random.nextInt(6);
+
+            if (tabuleiro[linhaTemp][colunaTemp] == null) {
+                tabuleiro[linhaTemp][colunaTemp] = new Armadilha();
+                tesouroArmadilha.add(tabuleiro[linhaTemp][colunaTemp]);
+                ++contador;
+            }
         }
     }
 
@@ -72,22 +81,6 @@ public class Jogo {
                 }
             }
         }
-    }
-
-    public Set<ElementoTabuleiro> getTesouros() {
-        return tesouros;
-    }
-
-    public void setTesouros(Set<ElementoTabuleiro> tesouros) {
-        this.tesouros = tesouros;
-    }
-
-    public Set<ElementoTabuleiro> getArmadilhas() {
-        return armadilhas;
-    }
-
-    public void setArmadilhas(Set<ElementoTabuleiro> armadilhas) {
-        this.armadilhas = armadilhas;
     }
 
     public String[][] getTabuleiroString() {
@@ -137,6 +130,4 @@ public class Jogo {
     public void setColuna(int coluna) {
         this.coluna = coluna;
     }
-
-    
 }
